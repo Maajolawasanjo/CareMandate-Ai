@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { 
-  ArrowLeft, Calendar, Clock, User, Share2, 
+  ArrowLeft, ArrowRight, Calendar, Clock, User, Share2, 
   MessageCircle, Bookmark, Sparkles, HeartPulse
 } from "lucide-react";
 import React from "react";

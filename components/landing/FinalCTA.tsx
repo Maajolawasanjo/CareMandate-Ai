@@ -10,10 +10,7 @@ export default function FinalCTA() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <motion.div 
-          initial={{ opacity: 1, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+        <div 
           className="max-w-3xl mx-auto"
         >
           <h2 className="text-white mb-6">Ready to simplify care operations?</h2>
@@ -34,9 +31,8 @@ export default function FinalCTA() {
           <p className="mt-8 text-sm text-white/60 font-medium">
             No credit card required • Personalised walkthrough • 15-minute call
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
-

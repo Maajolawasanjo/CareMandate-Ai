@@ -42,12 +42,8 @@ export default function Problem() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {problems.map((problem, i) => (
-            <motion.div 
+            <div 
               key={i}
-              initial={{ opacity: 1, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
               className="p-8 rounded-2xl bg-white border border-border-light shadow-sm"
             >
               <div className="w-12 h-12 rounded-xl bg-error/5 flex items-center justify-center text-error mb-6">
@@ -57,7 +53,7 @@ export default function Problem() {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {problem.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

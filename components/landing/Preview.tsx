@@ -37,10 +37,7 @@ export default function Preview() {
           </div>
 
           {/* Main UI Mockup */}
-          <motion.div 
-            initial={{ opacity: 1, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div 
             className="bg-white border border-border-light rounded-b-2xl shadow-2xl p-8 min-h-[400px]"
           >
             <div className="grid lg:grid-cols-3 gap-8">
@@ -69,7 +66,7 @@ export default function Preview() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         <div className="mt-12 text-center">
