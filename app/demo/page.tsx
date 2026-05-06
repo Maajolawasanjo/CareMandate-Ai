@@ -6,20 +6,34 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { bookDemo } from "@/app/actions/demo";
+
 export default function DemoPage() {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate a clinical API response
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1500);
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const date = selectedDate ? `December ${selectedDate}, 2024` : "December 14, 2024";
+
+    if (email && selectedTime && selectedDate) {
+      const result = await bookDemo({ email, date, time: selectedTime });
+      if (result.success) {
+        setIsSuccess(true);
+      } else {
+        alert("Failed to book demo");
+      }
+    } else {
+      alert("Please select a date and time");
+    }
+    
+    setIsSubmitting(false);
   };
 
   return (
@@ -93,7 +107,12 @@ export default function DemoPage() {
                        <div key={i} className="h-10 flex items-center justify-center text-[10px] font-bold text-slate-300 uppercase">{d}</div>
                      ))}
                      {[...Array(7)].map((_, i) => (
-                       <button key={i} className={`h-12 rounded-2xl flex items-center justify-center text-sm font-bold transition-all ${i === 3 ? 'bg-[#5B1C6D] text-white shadow-lg shadow-[#5B1C6D]/20' : 'bg-slate-50 text-slate-400 hover:bg-slate-100'}`}>
+                       <button 
+                         key={i} 
+                         type="button"
+                         onClick={() => setSelectedDate(14 + i)}
+                         className={`h-12 rounded-2xl flex items-center justify-center text-sm font-bold transition-all ${selectedDate === (14 + i) ? 'bg-[#5B1C6D] text-white shadow-lg shadow-[#5B1C6D]/20' : 'bg-slate-50 text-slate-400 hover:bg-slate-100'}`}
+                       >
                          {14 + i}
                        </button>
                      ))}
@@ -109,6 +128,7 @@ export default function DemoPage() {
                      {["09:00", "11:30", "14:00", "15:30", "16:15", "17:00"].map((time) => (
                        <button 
                          key={time} 
+                         type="button"
                          onClick={() => setSelectedTime(time)}
                          className={`h-12 rounded-xl text-xs font-bold border-2 transition-all ${selectedTime === time ? 'border-[#5B1C6D] bg-[#5B1C6D]/5 text-[#5B1C6D]' : 'border-slate-100 text-slate-500 hover:border-slate-200'}`}
                        >
@@ -122,12 +142,13 @@ export default function DemoPage() {
                 <form className="space-y-10 pt-4 border-t border-slate-100" onSubmit={handleSubmit}>
                   <div className="space-y-4">
                     <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block ml-1">Work Email</label>
-                    <input required type="email" placeholder="john@hospital.com" className="w-full h-12 bg-transparent border-b-2 border-slate-100 focus:border-[#5B1C6D] transition-all outline-none px-1 text-slate-900 font-bold placeholder:text-slate-300 placeholder:font-normal" />
+                    <input name="email" required type="email" placeholder="john@hospital.com" className="w-full h-12 bg-transparent border-b-2 border-slate-100 focus:border-[#5B1C6D] transition-all outline-none px-1 text-slate-900 font-bold placeholder:text-slate-300 placeholder:font-normal" />
                   </div>
 
                   <Button 
                     size="lg" 
-                    disabled={isSubmitting || !selectedTime}
+                    type="submit"
+                    disabled={isSubmitting || !selectedTime || !selectedDate}
                     className="w-full h-16 rounded-2xl bg-[#5B1C6D] text-white hover:bg-[#4A1658] transition-all shadow-xl shadow-[#5B1C6D]/20 group text-lg disabled:opacity-50"
                   >
                     {isSubmitting ? "Securing slot..." : "Confirm Booking"}

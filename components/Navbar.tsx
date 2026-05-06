@@ -102,6 +102,7 @@ export default function Navbar() {
           </div>
 
           <Link href="/about" className="px-4 py-2 text-sm font-bold text-slate-600 hover:text-primary-ui transition-colors">Company</Link>
+          <Link href="/admin" className="px-4 py-2 text-sm font-bold text-slate-600 hover:text-primary-ui transition-colors">Admin</Link>
 
           {/* Resources Dropdown */}
           <div className="relative group px-4 py-2">
@@ -157,6 +158,7 @@ export default function Navbar() {
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Company</p>
               <Link href="/about" className="block text-2xl font-bold text-slate-900">Our Story</Link>
               <Link href="/about" className="block text-2xl font-bold text-slate-900">Careers</Link>
+              <Link href="/admin" className="block text-2xl font-bold text-slate-900">Admin Dashboard</Link>
             </div>
           </div>
           <div className="pt-8 border-t border-slate-100 flex flex-col gap-4">
