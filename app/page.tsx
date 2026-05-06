@@ -17,7 +17,6 @@ export default function Home() {
       <Solution />
       <HowItWorks />
       
-      {/* Final Conversion Section */}
       <section className="py-32 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-purple-500/10 blur-[100px] rounded-full -translate-x-1/2 translate-y-1/2" />

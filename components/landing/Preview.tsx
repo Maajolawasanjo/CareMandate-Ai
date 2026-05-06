@@ -1,6 +1,5 @@
-﻿"use client";
+"use client";
 
-import { motion } from "framer-motion";
 import { Layout, Calendar, Map, Bell } from "lucide-react";
 
 export default function Preview() {
@@ -20,7 +19,7 @@ export default function Preview() {
             <span>Product Preview</span>
           </div>
           <h2 className="mb-6">Engineered for <span className="text-primary-ui">clinical excellence</span></h2>
-          <p className="text-lg text-muted-foreground">Don&apos;t just take our word for itâ€”see the system in action.</p>
+          <p className="text-lg text-muted-foreground">Don&apos;t just take our word for it—see the system in action.</p>
         </div>
 
         <div className="max-w-5xl mx-auto">

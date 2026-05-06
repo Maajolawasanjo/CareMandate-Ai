@@ -1,6 +1,5 @@
-﻿"use client";
+"use client";
 
-import { motion } from "framer-motion";
 import { TrendingUp, Clock, Eye, ShieldCheck, UserCheck } from "lucide-react";
 
 export default function Benefits() {

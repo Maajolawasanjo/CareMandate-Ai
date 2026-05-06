@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { 
   Home, Hotel, HeartPulse, Network, ArrowRight 
@@ -27,12 +26,12 @@ export default function SolutionsHub() {
   return (
     <main className="bg-background pt-24 pb-32">
       <section className="max-w-7xl mx-auto px-6 mb-24">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+        <div className="max-w-3xl">
           <h1 className="mb-6">CareMandate for every <span className="text-primary-ui">care environment</span></h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
             Tailored clinical coordination systems designed to solve the unique operational challenges of different healthcare industries.
           </p>
-        </motion.div>
+        </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-6">

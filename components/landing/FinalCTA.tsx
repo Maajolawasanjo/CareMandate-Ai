@@ -1,6 +1,5 @@
-﻿"use client";
+"use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -33,7 +32,7 @@ export default function FinalCTA() {
           </div>
           
           <p className="mt-8 text-sm text-white/60 font-medium">
-            No credit card required â€¢ Personalised walkthrough â€¢ 15-minute call
+            No credit card required • Personalised walkthrough • 15-minute call
           </p>
         </motion.div>
       </div>

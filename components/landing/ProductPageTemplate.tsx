@@ -17,16 +17,19 @@ interface ProductPageProps {
     subtitle: string;
     ctaPrimary?: string;
     ctaSecondary?: string;
+    image?: string;
   };
   problem: {
     title: string;
     text: string;
     highlight?: string;
+    image?: string;
   };
   solution: {
     title: string;
     text: string;
     points?: string[];
+    image?: string;
   };
   howItWorks?: {
     title: string;
@@ -39,6 +42,7 @@ interface ProductPageProps {
   benefits?: {
     title: string;
     items: { title: string; description: string }[];
+    image?: string;
   };
 }
 
@@ -74,34 +78,47 @@ export default function ProductPageTemplate({
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="max-w-4xl">
-            <span className="text-[11px] font-bold text-[#5B1C6D] uppercase tracking-[0.4em] mb-10 block">
-              {category}
-            </span>
-            <h1 className="text-[56px] lg:text-[96px] font-bold text-[#0F172A] leading-[0.9] tracking-tighter mb-12">
-              {hero.title.split(' ').map((word, i) => (
-                <span key={i} className={i === hero.title.split(' ').length - 1 ? "text-[#5B1C6D] italic serif font-medium" : ""}>
-                  {word}{' '}
-                </span>
-              ))}
-            </h1>
-            <p className="text-xl lg:text-2xl text-slate-500 leading-relaxed mb-16 max-w-2xl font-medium">
-              {hero.subtitle}
-            </p>
-            <div className="flex flex-wrap gap-6">
-              <Link href="/demo">
-                <Button size="lg" className="h-16 px-10 rounded-[24px] bg-[#5B1C6D] text-white hover:bg-[#4A1658] shadow-2xl shadow-[#5B1C6D]/20 transition-all text-lg group">
-                  {hero.ctaPrimary || "Book Demo"} <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              {hero.ctaSecondary && (
-                <Link href="/about">
-                  <Button variant="outline" size="lg" className="h-16 px-10 rounded-[24px] border-2 border-slate-200 bg-transparent text-[#475569] hover:bg-slate-50 hover:border-slate-300 text-lg transition-all">
-                    {hero.ctaSecondary}
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="max-w-4xl">
+              <span className="text-[11px] font-bold text-[#5B1C6D] uppercase tracking-[0.4em] mb-10 block">
+                {category}
+              </span>
+              <h1 className="text-[56px] lg:text-[80px] font-bold text-[#0F172A] leading-[0.9] tracking-tighter mb-12">
+                {hero.title.split(' ').map((word, i) => (
+                  <span key={i} className={i === hero.title.split(' ').length - 1 ? "text-[#5B1C6D] italic serif font-medium" : ""}>
+                    {word}{' '}
+                  </span>
+                ))}
+              </h1>
+              <p className="text-xl lg:text-2xl text-slate-500 leading-relaxed mb-16 max-w-2xl font-medium">
+                {hero.subtitle}
+              </p>
+              <div className="flex flex-wrap gap-6">
+                <Link href="/demo">
+                  <Button size="lg" className="h-16 px-10 rounded-[24px] bg-[#5B1C6D] text-white hover:bg-[#4A1658] shadow-2xl shadow-[#5B1C6D]/20 transition-all text-lg group">
+                    {hero.ctaPrimary || "Book Demo"} <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-              )}
+                {hero.ctaSecondary && (
+                  <Link href="/about">
+                    <Button variant="outline" size="lg" className="h-16 px-10 rounded-[24px] border-2 border-slate-200 bg-transparent text-[#475569] hover:bg-slate-50 hover:border-slate-300 text-lg transition-all">
+                      {hero.ctaSecondary}
+                    </Button>
+                  </Link>
+                )}
+              </div>
             </div>
+
+            {hero.image && (
+              <div className="relative group">
+                <div className="absolute inset-0 bg-[#5B1C6D]/10 rounded-[48px] blur-3xl group-hover:bg-[#5B1C6D]/20 transition-all duration-700" />
+                <img 
+                  src={hero.image} 
+                  alt={hero.title}
+                  className="relative z-10 w-full h-[500px] object-cover rounded-[48px] shadow-2xl border border-white/20 transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -140,17 +157,30 @@ export default function ProductPageTemplate({
       {/* Solution Section - Airy & Geometric */}
       <section className="py-40 bg-[#FBF9FE]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-4xl mb-24 space-y-8">
-            <div className="inline-flex items-center gap-3 text-[#5B1C6D] font-bold text-xs uppercase tracking-widest">
-              <Sparkles className="w-5 h-5" />
-              <span>A New Standard</span>
+          <div className="grid lg:grid-cols-2 gap-24 items-center mb-24">
+            <div className="max-w-4xl space-y-8">
+              <div className="inline-flex items-center gap-3 text-[#5B1C6D] font-bold text-xs uppercase tracking-widest">
+                <Sparkles className="w-5 h-5" />
+                <span>A New Standard</span>
+              </div>
+              <h2 className="text-[56px] lg:text-[72px] font-bold text-[#0F172A] tracking-tight leading-[1.0]">
+                {solution.title}
+              </h2>
+              <p className="text-xl lg:text-2xl text-slate-500 leading-relaxed font-medium">
+                {solution.text}
+              </p>
             </div>
-            <h2 className="text-[56px] lg:text-[72px] font-bold text-[#0F172A] tracking-tight leading-[1.0]">
-              {solution.title}
-            </h2>
-            <p className="text-xl lg:text-2xl text-slate-500 leading-relaxed font-medium">
-              {solution.text}
-            </p>
+            
+            {solution.image && (
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-[#5B1C6D]/5 rounded-[48px] blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                <img 
+                  src={solution.image} 
+                  alt={solution.title}
+                  className="w-full h-[400px] object-cover rounded-[48px] shadow-xl border border-slate-100 group-hover:-translate-y-2 transition-all duration-700"
+                />
+              </div>
+            )}
           </div>
 
           {solution.points && (
@@ -241,20 +271,35 @@ export default function ProductPageTemplate({
                 </div>
               </div>
               
-              <div className="relative">
-                <div className="bg-[#0F172A] rounded-[56px] p-16 lg:p-24 shadow-2xl relative overflow-hidden group">
-                   <div className="absolute top-0 right-0 w-64 h-64 bg-[#5B1C6D]/20 blur-[100px] rounded-full" />
-                   <div className="relative z-10 space-y-10">
-                      <PieChart className="w-16 h-16 text-primary-soft" />
-                      <h3 className="text-4xl font-bold text-white leading-[1.1]">Outcome <br />Optimisation</h3>
-                      <p className="text-xl text-slate-400 font-medium leading-relaxed">Transition from feature lists to business impact and clinical precision. Every metric we track is designed to improve care.</p>
-                      <Link href="/demo">
-                        <Button className="h-14 px-8 rounded-2xl bg-white text-[#0F172A] hover:bg-slate-100 transition-all font-bold group">
-                          Request Full Audit <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                   </div>
-                </div>
+              <div className="relative group">
+                {benefits.image ? (
+                  <div className="relative">
+                    <div className="absolute -inset-4 bg-[#5B1C6D]/10 rounded-[56px] blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                    <img 
+                      src={benefits.image} 
+                      alt={benefits.title}
+                      className="w-full h-[600px] object-cover rounded-[56px] shadow-2xl relative z-10 border border-slate-100 group-hover:scale-[1.01] transition-all duration-700"
+                    />
+                    <div className="absolute bottom-8 left-8 right-8 p-8 bg-white/90 backdrop-blur-md rounded-[32px] border border-white/20 z-20 shadow-xl translate-y-4 group-hover:translate-y-0 transition-all duration-700">
+                      <p className="text-[#0F172A] font-bold text-lg mb-1 italic serif leading-tight">Clinical impact realized.</p>
+                      <p className="text-slate-500 text-sm font-medium">Every implementation delivers measurable quality improvements.</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-[#0F172A] rounded-[56px] p-16 lg:p-24 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#5B1C6D]/20 blur-[100px] rounded-full" />
+                    <div className="relative z-10 space-y-10">
+                        <PieChart className="w-16 h-16 text-primary-soft" />
+                        <h3 className="text-4xl font-bold text-white leading-[1.1]">Outcome <br />Optimisation</h3>
+                        <p className="text-xl text-slate-400 font-medium leading-relaxed">Transition from feature lists to business impact and clinical precision. Every metric we track is designed to improve care.</p>
+                        <Link href="/demo">
+                          <Button className="h-14 px-8 rounded-2xl bg-white text-[#0F172A] hover:bg-slate-100 transition-all font-bold group">
+                            Request Full Audit <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                          </Button>
+                        </Link>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

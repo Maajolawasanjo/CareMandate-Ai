@@ -1,6 +1,5 @@
-﻿"use client";
+"use client";
 
-import { motion } from "framer-motion";
 import { AlertCircle, Clock, Users, ShieldAlert, Database } from "lucide-react";
 
 export default function Problem() {
@@ -37,7 +36,7 @@ export default function Problem() {
           </div>
           <h2 className="mb-6">Care operations are still <span className="text-error">fragmented and manual</span></h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Most care providers are struggling with operational chaosâ€”managing clinical delivery through a patchwork of tools that don&apos;t talk to each other.
+            Most care providers are struggling with operational chaos—managing clinical delivery through a patchwork of tools that don&apos;t talk to each other.
           </p>
         </div>
 

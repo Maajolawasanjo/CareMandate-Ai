@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sparkles, ShieldCheck, Zap, Activity, ArrowRight, Lock, ArrowLeft, Check } from "lucide-react";
+import { Sparkles, ShieldCheck, Zap, Activity, ArrowRight, UserPlus, ArrowLeft, Check } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -15,7 +15,7 @@ export default function LoginPage() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate authentication
+    // Simulate registration
     setTimeout(() => {
       setIsSubmitting(false);
       setShowSuccess(true);
@@ -41,30 +41,30 @@ export default function LoginPage() {
 
       {/* Immersive Background */}
       <div className="absolute inset-0 bg-topo opacity-10 pointer-events-none" />
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#5B1C6D]/5 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#5B1C6D]/5 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#5B1C6D]/5 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-[#5B1C6D]/5 rounded-full blur-[120px] animate-pulse" />
 
-      <div className="w-full max-w-[540px] relative z-10">
+      <div className="w-full max-w-[580px] relative z-10">
         <div 
           className="bg-white rounded-[56px] p-10 lg:p-16 shadow-[0_40px_100px_-20px_rgba(91,28,109,0.08)] border border-slate-100 overflow-hidden relative"
         >
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#5B1C6D] via-primary-soft to-[#5B1C6D]" />
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-soft via-[#5B1C6D] to-primary-soft" />
           
           {/* Header */}
           <div className="space-y-8 text-center mb-12">
             <div className="flex justify-center">
                <div className="w-16 h-16 rounded-3xl bg-[#5B1C6D]/5 flex items-center justify-center text-[#5B1C6D]">
-                  <Lock className="w-8 h-8" />
+                  <UserPlus className="w-8 h-8" />
                </div>
             </div>
             <div className="space-y-2">
-               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 tracking-tighter">Welcome back.</h1>
-               <p className="text-slate-500 font-medium">Log in to manage your clinical network.</p>
+               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 tracking-tighter">Onboarding.</h1>
+               <p className="text-slate-500 font-medium">Request access to the CareMandate ecosystem.</p>
             </div>
           </div>
 
           {/* Social SSO */}
-          <button className="w-full h-16 flex items-center justify-center gap-4 rounded-2xl border border-slate-100 bg-white hover:bg-slate-50 transition-all font-bold text-slate-900 shadow-sm group mb-10">
+          <button className="w-full h-16 flex items-center justify-center gap-4 rounded-2xl border border-slate-100 bg-white hover:bg-slate-50 transition-all font-bold text-slate-900 shadow-sm group mb-10 text-sm">
             <div className="w-6 h-6 flex items-center justify-center">
                <svg viewBox="0 0 24 24" className="w-5 h-5">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -82,39 +82,46 @@ export default function LoginPage() {
           </div>
 
           {/* Form */}
-          <form className="space-y-8" onSubmit={handleSubmit}>
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-2 gap-6">
+               <div className="space-y-3">
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">First Name</label>
+                  <input required placeholder="Sarah" className="w-full h-16 px-6 rounded-2xl border border-slate-100 bg-[#FBF9FE] text-slate-900 font-bold focus:border-[#5B1C6D] focus:bg-white outline-none transition-all placeholder:text-slate-300 placeholder:font-normal" />
+               </div>
+               <div className="space-y-3">
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Last Name</label>
+                  <input required placeholder="Chen" className="w-full h-16 px-6 rounded-2xl border border-slate-100 bg-[#FBF9FE] text-slate-900 font-bold focus:border-[#5B1C6D] focus:bg-white outline-none transition-all placeholder:text-slate-300 placeholder:font-normal" />
+               </div>
+            </div>
+
             <div className="space-y-3">
               <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Professional Email</label>
               <input 
                 required
                 type="email" 
-                placeholder="dr.chen@caremandate.com" 
+                placeholder="dr.chen@hospital.com" 
                 className="w-full h-16 px-6 rounded-2xl border border-slate-100 bg-[#FBF9FE] text-slate-900 font-bold focus:border-[#5B1C6D] focus:bg-white outline-none transition-all placeholder:text-slate-300 placeholder:font-normal"
               />
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center justify-between px-1">
-                 <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Access Key</label>
-                 <Link href="#" className="text-[10px] font-bold text-[#5B1C6D] uppercase tracking-widest hover:underline">Forgot?</Link>
-              </div>
+              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Organization / Network Name</label>
               <input 
                 required
-                type="password" 
-                placeholder="••••••••••••" 
+                placeholder="Central City Health Network" 
                 className="w-full h-16 px-6 rounded-2xl border border-slate-100 bg-[#FBF9FE] text-slate-900 font-bold focus:border-[#5B1C6D] focus:bg-white outline-none transition-all placeholder:text-slate-300 placeholder:font-normal"
               />
             </div>
 
             <Button disabled={isSubmitting} size="lg" className="w-full h-16 rounded-2xl bg-[#5B1C6D] text-white hover:bg-slate-900 transition-all font-bold text-lg shadow-xl shadow-[#5B1C6D]/20 group">
-              {isSubmitting ? "Verifying..." : "Log in to Dashboard"} 
+              {isSubmitting ? "Processing..." : "Create Organization"}
               {!isSubmitting && <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />}
             </Button>
           </form>
 
           <p className="mt-12 text-center text-slate-500 font-medium">
-             Authorized personnel only. <br />
-             <Link href="/register" className="text-[#5B1C6D] font-bold hover:underline">Request New Access</Link>
+             Already part of a network? <br />
+             <Link href="/login" className="text-[#5B1C6D] font-bold hover:underline">Log in to Access</Link>
           </p>
 
           {showSuccess && (
@@ -122,9 +129,9 @@ export default function LoginPage() {
               <div className="w-20 h-20 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mb-8">
                  <Check className="w-10 h-10 stroke-[3]" />
               </div>
-              <h3 className="text-3xl font-bold text-slate-900 tracking-tight mb-4">Login Successful</h3>
+              <h3 className="text-3xl font-bold text-slate-900 tracking-tight mb-4">Request Received</h3>
               <p className="text-slate-500 font-medium leading-relaxed">
-                Authentication verified. Redirecting you to the clinical command center...
+                Your enterprise request has been logged. Redirecting you to the clinical dashboard...
               </p>
             </div>
           )}
@@ -134,11 +141,11 @@ export default function LoginPage() {
         <div className="mt-12 flex items-center justify-center gap-8 opacity-40 grayscale grayscale-100 scale-90">
            <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4" />
-              <span className="text-[10px] font-bold uppercase tracking-widest">AES-256 Encrypted</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">Enterprise Secured</span>
            </div>
            <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4" />
-              <span className="text-[10px] font-bold uppercase tracking-widest">Clinical Protocol Enforced</span>
+              <Activity className="w-4 h-4" />
+              <span className="text-[10px] font-bold uppercase tracking-widest">Verified Credentials</span>
            </div>
         </div>
       </div>

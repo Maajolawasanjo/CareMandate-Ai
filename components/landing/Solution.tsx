@@ -1,8 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { HeartPulse, ShieldCheck, Zap, Star, ArrowRight } from "lucide-react";
+import { HeartPulse, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Solution() {
@@ -17,7 +14,6 @@ export default function Solution() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-20 lg:gap-32 items-start">
           
-          {/* Left: Refined Image Presentation */}
           <div className="w-full lg:w-1/2 relative">
             <div className="relative z-10 rounded-[64px] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border-[12px] border-white aspect-[5/6] group">
               <Image 
@@ -26,11 +22,9 @@ export default function Solution() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-1000"
               />
-              {/* Subtle Overlay Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
 
-            {/* High-Fidelity "Verified" Badge */}
             <div className="absolute top-12 -left-8 p-6 rounded-[32px] bg-white/95 backdrop-blur-xl shadow-2xl border border-white z-20 flex items-center gap-4 animate-float">
                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-500 flex items-center justify-center">
                   <ShieldCheck className="w-6 h-6" />
@@ -42,7 +36,6 @@ export default function Solution() {
             </div>
           </div>
 
-          {/* Right: Sleek Content Column */}
           <div className="w-full lg:w-1/2 flex flex-col pt-10">
             <div className="space-y-8 mb-16">
               <h2 className="text-[56px] lg:text-[72px] font-bold text-slate-900 leading-[0.95] tracking-tight">
