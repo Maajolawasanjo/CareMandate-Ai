@@ -1,6 +1,5 @@
-﻿"use client";
+"use client";
 
-import { motion } from "framer-motion";
 import { TrendingUp, Clock, Eye, ShieldCheck, UserCheck } from "lucide-react";
 
 export default function Benefits() {
@@ -44,12 +43,8 @@ export default function Benefits() {
             
             <div className="space-y-10">
               {benefits.map((benefit, i) => (
-                <motion.div 
+                <div 
                   key={i}
-                  initial={{ opacity: 1, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
                   className="flex gap-6"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary-soft flex items-center justify-center text-primary-ui shrink-0">
@@ -61,15 +56,12 @@ export default function Benefits() {
                       {benefit.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 1, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div 
             className="bg-primary-soft/30 rounded-3xl p-12 border border-primary/5"
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-border-light">
@@ -82,7 +74,7 @@ export default function Benefits() {
                 <p className="text-xs text-muted-foreground">Reported average improvement in coordination speed after 3 months.</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

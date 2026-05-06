@@ -1,9 +1,5 @@
-"use client";
-
-import { motion, useAnimationControls } from "framer-motion";
 import { Zap, Calendar, MapPin, Users, BarChart3, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
 
 const features = [
   {
@@ -65,23 +61,11 @@ const features = [
 // Duplicate features for infinite loop
 const doubledFeatures = [...features, ...features];
 
+
+
 export default function Features() {
-  const controls = useAnimationControls();
-
-  useEffect(() => {
-    controls.start({
-      x: ["0%", "-50%"],
-      transition: {
-        duration: 40,
-        ease: "linear",
-        repeat: Infinity,
-      }
-    });
-  }, [controls]);
-
   return (
     <section className="py-32 bg-transparent relative overflow-hidden">
-      {/* Background Decorative Element */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary-soft/20 blur-[120px] rounded-full -z-10" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10 mb-20 text-center">
@@ -139,16 +123,6 @@ export default function Features() {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          display: flex;
-          animation: marquee 40s linear infinite;
-        }
-      `}</style>
 
     </section>
   );

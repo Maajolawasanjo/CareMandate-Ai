@@ -2,8 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+  
+  // Hide footer on auth pages
+  if (pathname?.includes("/login") || pathname?.includes("/register")) return null;
+
   const sections = [
     {
       title: "Product",

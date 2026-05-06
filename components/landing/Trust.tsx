@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ShieldCheck, Award, HeartPulse, Star } from "lucide-react";
 
 export default function Trust() {

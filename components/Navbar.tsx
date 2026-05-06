@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const features = [
   { title: "Care Operations", href: "/features/care-operations", desc: "Unified clinical system" },
@@ -29,9 +30,12 @@ const resources = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  if (pathname?.includes("/login") || pathname?.includes("/register")) return null;
 
   useEffect(() => {
     const updateScroll = () => {
@@ -57,7 +61,6 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-xl py-3 shadow-lg" : "bg-white py-5 border-b border-slate-100"}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-2xl tracking-tight group">
           <div className="w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-110 relative">
              <Image src="/logo.svg" alt="Logo" width={36} height={36} />
@@ -65,9 +68,7 @@ export default function Navbar() {
           <span className="text-slate-900 group-hover:text-primary-ui transition-colors">CareMandate</span>
         </Link>
 
-        {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-1">
-          {/* Features Dropdown */}
           <div className="relative group px-4 py-2">
             <button className="flex items-center gap-1 text-sm font-bold text-slate-600 hover:text-primary-ui transition-colors">
               Features <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform" />
@@ -84,7 +85,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Solutions Dropdown */}
           <div className="relative group px-4 py-2">
             <button className="flex items-center gap-1 text-sm font-bold text-slate-600 hover:text-primary-ui transition-colors">
               Solutions <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform" />
@@ -104,7 +104,6 @@ export default function Navbar() {
           <Link href="/about" className="px-4 py-2 text-sm font-bold text-slate-600 hover:text-primary-ui transition-colors">Company</Link>
           <Link href="/admin" className="px-4 py-2 text-sm font-bold text-slate-600 hover:text-primary-ui transition-colors">Admin</Link>
 
-          {/* Resources Dropdown */}
           <div className="relative group px-4 py-2">
             <button className="flex items-center gap-1 text-sm font-bold text-slate-600 hover:text-primary-ui transition-colors">
               Resources <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform" />
@@ -122,7 +121,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* CTA Actions */}
         <div className="hidden lg:flex items-center gap-6">
           <Link href="/login" className="text-sm font-bold text-slate-600 hover:text-[#5B1C6D] transition-colors">Sign In</Link>
           <Link href="/demo">
@@ -133,14 +131,12 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
         <button className="lg:hidden p-2 text-slate-900" onClick={() => setMobileMenuOpen(true)}>
           <Menu className="w-7 h-7" />
         </button>
 
       </div>
 
-      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-white p-6 flex flex-col overflow-y-auto">
           <div className="flex items-center justify-between mb-12">
@@ -170,7 +166,6 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* PROGRESS BAR */}
       <div 
         className="absolute bottom-0 left-0 h-[3px] bg-[#5B1C6D] transition-all duration-150 ease-out z-50 shadow-[0_2px_10px_rgba(91,28,109,0.4)]"
         style={{ width: `${scrollProgress}%` }}

@@ -8,13 +8,8 @@ import { ArrowRight, ShieldCheck, Activity, Sparkles } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-[85vh] flex flex-col justify-center pt-24 pb-20 overflow-hidden">
-      {/* Layer 1: The Base Background Color */}
       <div className="absolute inset-0 bg-[#FBF9FE] -z-30" />
-
-      {/* Layer 2: The Topographic Texture (Subtle) */}
       <div className="absolute inset-0 bg-topo opacity-10 -z-20 pointer-events-none" />
-      
-      {/* Layer 3: Soft Ambient Glows */}
       <div className="absolute top-0 right-0 w-full h-full -z-10 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#5B1C6D]/10 blur-[140px] rounded-full" />
       </div>
@@ -22,7 +17,6 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 relative w-full mb-16">
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-24 items-center">
           
-          {/* Elegant Text Block */}
           <div className="flex flex-col gap-10">
             <div className="space-y-8">
               <h1 className="text-[64px] lg:text-[88px] leading-[0.9] font-bold tracking-tight text-slate-900">
@@ -34,7 +28,7 @@ export default function Hero() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-5">
+            <div className="flex wrap gap-5">
               <Link href="/demo">
                 <Button size="lg" className="h-16 px-10 rounded-[24px] bg-[#5B1C6D] text-white hover:bg-[#4A1658] shadow-2xl shadow-[#5B1C6D]/20 group transition-all text-lg active:scale-95">
                   Book a Demo
@@ -72,7 +66,10 @@ export default function Hero() {
             { title: "Smart Scheduling", desc: "Automated shift management.", icon: Activity, color: "text-[#5B1C6D]" },
             { title: "Audit Ready", desc: "Automated regulatory logs.", icon: Sparkles, color: "text-blue-500" }
           ].map((card, i) => (
-            <div key={i} className="bg-white p-8 rounded-[40px] border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.06)] flex items-start gap-6 hover:translate-y-[-10px] transition-all duration-500">
+            <div 
+              key={i} 
+              className="bg-white p-8 rounded-[40px] border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.06)] flex items-start gap-6 hover:translate-y-[-10px] transition-all duration-500"
+            >
               <div className="w-16 h-16 rounded-3xl bg-slate-50 flex items-center justify-center shrink-0">
                 <card.icon className={`w-8 h-8 ${card.color}`} />
               </div>

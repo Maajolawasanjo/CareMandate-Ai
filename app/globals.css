@@ -113,19 +113,6 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {
@@ -145,7 +132,6 @@
     @apply bg-[#FBF9FE] text-slate-900 antialiased;
   }
 
-  /* Custom Scrollbar - Floating Style */
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -163,7 +149,6 @@
     background-clip: content-box;
   }
   
-  /* Firefox */
   * {
     scrollbar-width: thin;
     scrollbar-color: #5B1C6D transparent;
@@ -202,7 +187,6 @@
   }
 
   .bg-topo {
-    /* Base64 encoded topographic pattern for maximum browser reliability */
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgdmlld0JveD0iMCAwIDgwMCA4MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNUIxQzZEIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0wIDEwMCBRIDIwMCA1MCwgNDAwIDEwMCBUIDgwMCAxMDAgTTAgMzAwIFEgMjAwIDI1MCwgNDAwIDMwMCBUIDgwMCAzMDAgTTAgNTAwIFEgMjAwIDQ1MCwgNDAwIDUwMCBUIDgwMCA1MDAgTTAgNzAwIFEgMjAwIDY1MCwgNDAwIDcwMCBUIDgwMCA3MDAiLz48L2c+PC9zdmc+");
     background-size: 800px 800px;
   }
